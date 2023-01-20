@@ -10,6 +10,7 @@ New target is:
 - Each File must have "target, result, analysis" TEXT block (either at the start or the end)
 
 
+
 **Solution:**
 
 _Code 1: Building the skeleton_
@@ -26,6 +27,7 @@ Analysis:
 - Decent model with almost no overfitting
 - Model does not peak by 15 epochs needs more capacity
 - No epochs touch 99+ accuracy so far.
+
 
 _Code 2: Adding batch normalization_
 
@@ -45,6 +47,7 @@ Analysis:
 - Adding dropouts to reduce this gap would be a next step
 - Adding augmentation to generalize training would be a next step.
 
+
 _Code 3: Adding dropout and augmentation_
 
 Target:
@@ -63,6 +66,7 @@ Analysis:
 - Consistency in test accuracies in later epochs of 99.29 - 99.38
 - Adding data augmentation would be a next step
 - Adding LR optimizer would be a next step
+
 
 _Code 4: Adding GAP and LR scheduler_
 
