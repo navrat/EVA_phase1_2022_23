@@ -10,18 +10,22 @@ New target is:
 
 **Solution:**
 _Code 1: Building the skeleton_
+
 Target:
 - Create a light skeleton
+
 Results:
 - Parameters: 16.3k
 - Best Train Accuracy: 98.81 (till 15 epochs)
 - Best Test Accuracy: 98.74 (@ epoch ; till 15 epochs)
+
 Analysis:
 - Decent model with almost no overfitting
 - Model does not peak by 15 epochs needs more capacity
 - No epochs touch 99+ accuracy so far.
 
 _Code 2: Adding batch normalization_
+
 Target:
 - .
 - .
@@ -35,6 +39,7 @@ Analysis:
 - .
 
 _Code 3: Adding dropout and augmentation_
+
 Target:
 - .
 - .
@@ -48,6 +53,7 @@ Analysis:
 - .
 
 _Code 4: Adding GAP and LR scheduler_
+
 Target:
 - .
 - .
