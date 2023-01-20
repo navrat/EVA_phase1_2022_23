@@ -1,5 +1,7 @@
-Dataset: MNIST 
+Dataset: MNIST
+
 Objective: digit classification
+
 New target is:
 - 99.4% (this must be consistently shown in your last few epochs, and not a one-time achievement)
 - Less than or equal to 15 Epochs
