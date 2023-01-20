@@ -13,7 +13,7 @@ New target is:
 
 **Solution:**
 
-_Code 1: Building the skeleton_
+_Code 1: Building the light skeleton_
 
 Target:
 - Create a light skeleton
@@ -48,7 +48,7 @@ Analysis:
 - Adding augmentation to generalize training would be a next step.
 
 
-_Code 3: Adding dropout and augmentation_
+_Code 3: Adding dropout and GAP
 
 Target:
 - dropout on each layer
@@ -68,7 +68,7 @@ Analysis:
 - Adding LR optimizer would be a next step
 
 
-_Code 4: Adding GAP and LR scheduler_
+_Code 4: Adding data augmentation and LR scheduler_
 
 Target:
 - Add rotation based augmentation
