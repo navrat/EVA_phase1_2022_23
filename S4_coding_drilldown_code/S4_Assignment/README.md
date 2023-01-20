@@ -9,6 +9,7 @@ New target is:
 
 
 **Solution:**
+
 _Code 1: Building the skeleton_
 
 Target:
