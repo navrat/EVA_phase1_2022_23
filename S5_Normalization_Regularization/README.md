@@ -37,9 +37,11 @@ Find 10 misclassified images for each of the 3 models, and show them as a 5x2 im
 
 ![image](https://user-images.githubusercontent.com/31410799/215351816-dcd4d193-6b33-4651-8fee-a1b985f0c215.png)
 
+
 - model 2 with LN:
 
 ![image](https://user-images.githubusercontent.com/31410799/215351806-33533fcd-1a66-48ab-83b9-1acbfecf66b1.png)
+
 
 - model 3 with L1 + BN:
 
