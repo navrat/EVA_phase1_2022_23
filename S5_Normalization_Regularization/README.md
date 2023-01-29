@@ -3,7 +3,7 @@
 
 ## Leverage the 10k paramter code from S4 and build the following experiments:
 Write a single model.py file that includes GN/LN/BN and takes an argument to decide which normalization to include.
-Write a single notebook file to run all the 3 models above for 20 epochs each.
+Write a single notebook (S5_Assignment.ipynb contains the full code) file to run all the 3 models above for 20 epochs each.
 
 - Network with Group Normalization
 - Network with Layer Normalization
