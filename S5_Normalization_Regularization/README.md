@@ -16,6 +16,8 @@ Write a single notebook file to run all the 3 models above for 20 epochs each.
 - Layer Normalization: LN reverses this order of calculation and computes mean and stddev along the direction of the channels. There are always as many number of mean and stddev as the number of observations (i.e. batch size). The calculation of normalization still takes place for every value in the output (but using the aggregates computed for at an observation level).
 - Group Normalization: GN takes the middle route where the mean and stddev are calculated along the direction of only a subset of channels. There are as many mean and stddev as the (number of groups of channels) X number of observations (i.e. batch size). The calculation of normalization still takes place for every value in the output (but using the aggregates computed for at an observation X channel_grouping level).
 
+<img width="884" alt="image" src="https://user-images.githubusercontent.com/31410799/215353460-6446fda3-bbc7-43b6-b32b-85e057c5c41f.png">
+
 
 ## Findings from each of the 3 normalization techniques:
 
