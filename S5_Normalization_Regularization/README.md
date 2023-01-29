@@ -34,12 +34,15 @@ Findings from the 3 experiments:
 Find 10 misclassified images for each of the 3 models, and show them as a 5x2 image matrix in 3 separately annotated images
 
 - model 1 with GN:
+
 ![image](https://user-images.githubusercontent.com/31410799/215351816-dcd4d193-6b33-4651-8fee-a1b985f0c215.png)
 
 - model 2 with LN:
+
 ![image](https://user-images.githubusercontent.com/31410799/215351806-33533fcd-1a66-48ab-83b9-1acbfecf66b1.png)
 
 - model 3 with L1 + BN:
+
 ![image](https://user-images.githubusercontent.com/31410799/215351763-507374c8-0e7d-4423-b297-5f96098cddbb.png)
 
 
