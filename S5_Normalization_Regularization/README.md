@@ -1,5 +1,5 @@
-# Session 5 Assignment to cover the following. 
-## Last Modified: 29-Jan-2022
+# Last Modified: 29-Jan-2022
+# Session 5 Assignment to cover the following:
 
 ## Leverage the 10k paramter code from S4 and build the following experiments:
 Write a single model.py file that includes GN/LN/BN and takes an argument to decide which normalization to include.
