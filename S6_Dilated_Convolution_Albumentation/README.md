@@ -13,7 +13,7 @@ The original architecture here https://colab.research.google.com/drive/1qlewMtxc
 Three augmentations are performed using the albumentations library within the training data loader: 
 - horizontal flipping
 - shiftScaleRotate
-- coarseDropout 
+- coarseDropout (max_holes = 1, max_height=16px, max_width=1, min_holes = 1, min_height=16px, min_width=16px, fill_value=(mean of your dataset), mask_fill_value = None) 
 
 ### Results
 - The total number of parameters in the model were 200k to achieve required accuracy. 
