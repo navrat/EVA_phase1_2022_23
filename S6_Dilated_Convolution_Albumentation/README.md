@@ -13,8 +13,29 @@ The original architecture here https://colab.research.google.com/drive/1qlewMtxc
 Three augmentations are performed using the albumentations library within the training data loader: 
 - horizontal flipping
 - shiftScaleRotate
-- coarseDropout (max_holes = 1, max_height=16px, max_width=1, min_holes = 1, min_height=16px, min_width=16px, fill_value=(mean of your dataset), mask_fill_value = None) 
+- coarseDropout (max_holes = 2, max_height=16, max_width=16, min_holes = 1, min_height=4, min_width=4, fill_value=(mean of your dataset), mask_fill_value = None) 
 
 ### Results
 - The total number of parameters in the model were 200k to achieve required accuracy. 
+est set: Average loss: 0.5185, Accuracy: 8200/10000 (82.00%)
+
+
+ class wise performance: 
+
+  classes  accuracy
+0   plane      73.8
+1     car      92.0
+2    bird      68.5
+3     cat      80.3
+4    deer      68.7
+5     dog      89.2
+6    frog      84.3
+7   horse      83.8
+8    ship      91.7
+9   truck      87.7
+
 - The training log alongside epoch wise validation stats and the output of torchsummary can be referenced from the notebook.
+
+### Misclassified Images
+![image](https://user-images.githubusercontent.com/31410799/218307942-c4cc4fb6-376e-4259-81e2-4ae347dd7905.png)
+
