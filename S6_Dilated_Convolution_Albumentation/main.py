@@ -9,7 +9,7 @@ class train:
         self.train_acc    = []
 
     # Training
-    def execute(self,net, device, trainloader, optimizer, criterion,epoch):
+    def run_training(self,net, device, trainloader, optimizer, criterion,epoch):
 
         #print('Epoch: %d' % epoch)
         net.train()
@@ -57,7 +57,7 @@ class test:
         self.test_losses = []
         self.test_acc    = []
 
-    def execute(self, net, device, testloader, criterion):
+    def run_testing(self, net, device, testloader, criterion):
 
         net.eval()
         test_loss = 0
