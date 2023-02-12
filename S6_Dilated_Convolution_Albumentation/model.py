@@ -52,7 +52,7 @@ class Net(nn.Module):
             nn.ReLU(),
             norm_fn(128, self.norm_type, self.group_GN),
             nn.Dropout(self.dropout_val),
-            nn.Conv2d(in_channels=128, out_channels=`128, kernel_size=(3,3), stride=1, padding=1, groups=128, bias=False), # depthwise separable conv
+            nn.Conv2d(in_channels=128, out_channels=128, kernel_size=(3,3), stride=1, padding=1, groups=128, bias=False), # depthwise separable conv
             nn.ReLU(),
             norm_fn(128, self.norm_type, self.group_GN),
             nn.Dropout(self.dropout_val),
@@ -74,11 +74,11 @@ class Net(nn.Module):
             nn.ReLU(),
             norm_fn(128, self.norm_type, self.group_GN),
             nn.Dropout(self.dropout_val),
-            nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, stride=1, padding=1, groups=128 bias=False), # depthwise separable conv
+            nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, stride=1, padding=1, groups=128, bias=False), # depthwise separable conv
             nn.ReLU(),
             norm_fn(128, self.norm_type, self.group_GN),
             nn.Dropout(self.dropout_val),
-            nn.Conv2d(in_channels=128, out_channels=32, kernel_size=1, stride=1, padding=0, bias=False)
+            nn.Conv2d(in_channels=128, out_channels=32, kernel_size=1, stride=1, padding=0, bias=False),
             nn.ReLU(),
             norm_fn(32, self.norm_type, self.group_GN),
             nn.Dropout(self.dropout_val),
@@ -86,13 +86,13 @@ class Net(nn.Module):
 
         # Transition block 2 ; no max pooling ; strided convolution/ dilation
         self.transition_conv2 = nn.Sequential(
-            nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, padding=1, bias=False, dilation = 2), # altrous or dilated convolution
-            norm_fn(32, self.norm_type, self.group_GN),
-        ) # Receptive Field = 24 ; 32*8*8
+            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, padding=1, bias=False, dilation = 2), # altrous or dilated convolution
+            norm_fn(64, self.norm_type, self.group_GN),
+        ) # Receptive Field = 24 ; 64*8*8
             
         # convolution block 3 with dilation  
         self.convblock3 = nn.Sequential(
-            nn.Conv2d(in_channels=32, out_channels=128, kernel_size=1, stride=1, padding=0, bias=False),
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=1, stride=1, padding=0, bias=False),
             nn.ReLU(),
             norm_fn(128, self.norm_type, self.group_GN),
             nn.Dropout(self.dropout_val),
@@ -108,7 +108,7 @@ class Net(nn.Module):
 
         # Transition block 3
         self.transition_conv3 = nn.Sequential(
-            nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, dilation=2, padding=0, bias=False, dilation = 2), # altrous or dilated convolution
+            nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=0, bias=False, dilation = 2), # altrous or dilated convolution
             norm_fn(64, self.norm_type, self.group_GN),
         ) # Receptive Field = 52 ; 64*4*4
 
@@ -134,23 +134,23 @@ class Net(nn.Module):
             nn.AvgPool2d(kernel_size=4)
         ) # Receptive Field = 108 ; 64*1*1
 
-        self.linear = nn.Linear(64, 10)
+        self.linear = nn.Linear(256, 10)
 
     def forward(self, x):
         #C1
         x1 = self.inp_conv(x)
         x2 = self.convblock1(x1)
         x3 = x2 + x1
-        x4 = self.transition_conv1(x3)
         #C2
+        x4 = self.transition_conv1(x3)
         x5 = self.convblock2(x4)
         x6 = x5 + x4
-        x7 = self.transition_conv2(x6)
         #C3
+        x7 = self.transition_conv2(x6)
         x8 = self.convblock3(x7)
         x9 = x8 + x7
-        x10 = self.transition_conv3(x9)
         #C4
+        x10 = self.transition_conv3(x9)
         x11 = self.convblock4(x10)
         #Output
         out = self.gap(x11)        
