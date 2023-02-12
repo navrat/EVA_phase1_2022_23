@@ -1,4 +1,6 @@
-import torch                   #PyTorch base libraries
+# Source leveraged: https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html
+# import required libraries
+import torch                  
 from torchvision import datasets, transforms
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,13 +11,12 @@ import cv2
 from albumentations import Compose, PadIfNeeded, RandomCrop, Normalize, HorizontalFlip, ShiftScaleRotate, CoarseDropout
 from albumentations.pytorch.transforms import ToTensorV2
 
-class album_Compose_train():
+class Compose_Train():
     def __init__(self):
         self.albumentations_transform = Compose([
             HorizontalFlip(),
             ShiftScaleRotate(),
-#            Cutout(num_holes=1, max_h_size=8, max_w_size=8, fill_value=[0.4914*255, 0.4822*255, 0.4471*255], always_apply=True, p=1.00),
-            CoarseDropout(max_holes=3, max_height=8, max_width=8, min_holes=None, min_height=4, min_width=4, fill_value=[0.4914*255, 0.4822*255, 0.4471*255], mask_fill_value=None, always_apply=False, p=0.7),
+            CoarseDropout (max_holes = 2, max_height=16, max_width=16, min_holes = 1, min_height=4, min_width=4, fill_value=[0.4914*255, 0.4822*255, 0.4471*255], mask_fill_value = None),
             Normalize(mean=[0.4914, 0.4822, 0.4471],std=[0.2469, 0.2433, 0.2615]),
             ToTensorV2()
         ])
@@ -24,7 +25,7 @@ class album_Compose_train():
         img = self.albumentations_transform(image=img)['image']
         return img
 
-class album_Compose_test():
+class Compose_Test():
     def __init__(self):
         self.albumentations_transform = Compose([
             Normalize(mean=[0.4914, 0.4822, 0.4471],std=[0.2469, 0.2433, 0.2615]),
@@ -37,12 +38,7 @@ class album_Compose_test():
         return img
 
 class dataset_cifar10:
-    """
-    Class to load the data and define the data loader
-    """
-
     def __init__(self, batch_size=128):
-
         # Defining CUDA
         cuda = torch.cuda.is_available()
         print("CUDA availability ?",cuda)
@@ -56,14 +52,14 @@ class dataset_cifar10:
 
     def data(self, train_flag):
 
-        # Transformations data augmentation (only for training)
+        # Training data augmentations
         if train_flag :
             return datasets.CIFAR10('./Data',
                             train=train_flag,
                             transform=album_Compose_train(),
                             download=True)
 
-        # Testing transformation - normalization adder
+        # Testing transformation - normalization
         else:
             return datasets.CIFAR10('./Data',
                                 train=train_flag,
@@ -109,13 +105,3 @@ class dataset_cifar10:
 
         if return_flag:
             return images,labels
-
-def unnormalize(img):
-    channel_means = (0.4914, 0.4822, 0.4471)
-    channel_stdevs = (0.2469, 0.2433, 0.2615)
-    img = img.numpy().astype(dtype=np.float32)
-  
-    for i in range(img.shape[0]):
-         img[i] = (img[i]*channel_stdevs[i])+channel_means[i]
-  
-    return np.transpose(img, (1,2,0))
