@@ -85,3 +85,21 @@ def plot_mispredictions(model, device, test_loader, target_classes):
 
   print("\n\n crosstab of incorrect prediction to understand patterns: \n")
   return pd.crosstab(pd.Series([target_classes[i] for i in incorrect_pred_targets_all], name='Actual'), pd.Series([target_classes[i] for i in incorrect_preds_all], name='Predicted'))
+
+def model_viz(metrics_m1, train_val = ["training","validation"], metric = ["loss","accuracy"]):
+  """
+  Visualization of 3 models and their 4 sets of metrics (train/validation X loss/accuracy)
+  Each metrics_mi is a list expected in the order of [train_loss,validation_loss, train_accuracy, validation_accuracy]
+  """
+  import numpy as np
+  fig, axs = plt.subplots(2,2, figsize = (18,10))
+  for i in np.arange(0,2): # represents loss/accuracy
+    for j in np.arange(0,2): # represents train/validation
+      axs[i,j].plot(metrics_m1[i+j])
+#       axs[i,j].plot(metrics_m2[i+j])
+#       axs[i,j].plot(metrics_m3[i+j])
+      axs[i,j].set_xlabel('# epochs')
+      axs[i,j].set_ylabel(f"{train_val[j]} {metric[i]}")
+      axs[i,j].legend(['Model C1C2C3C4O'], loc = 'upper right')  
+      axs[i,j].set_title(f"{train_val[j]} {metric[i]} across the C1C2C3C4O model")
+  fig.savefig('./normalization_regularization_experiments.png')
