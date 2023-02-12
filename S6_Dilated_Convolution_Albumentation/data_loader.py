@@ -56,14 +56,14 @@ class dataset_cifar10:
         if train_flag :
             return datasets.CIFAR10('./Data',
                             train=train_flag,
-                            transform=album_Compose_train(),
+                            transform=Compose_Train(),
                             download=True)
 
         # Testing transformation - normalization
         else:
             return datasets.CIFAR10('./Data',
                                 train=train_flag,
-                                transform=album_Compose_test(),
+                                transform=Compose_Test(),
                                 download=True)
 
     # Dataloader function
