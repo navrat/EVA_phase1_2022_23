@@ -81,27 +81,4 @@ class dataset_cifar10:
         print(total_data.mean(axis=(0,1,2))/255)
         print(total_data.std(axis=(0,1,2))/255)
 
-    def sample_pictures(self, train_flag=True, return_flag = False):
-
-        # get some random training images
-        images,labels = next(iter(self.loader(train_flag)))
-
-        sample_size=25 if train_flag else 5
-
-        images = images[0:sample_size]
-        labels = labels[0:sample_size]
-
-        fig = plt.figure(figsize=(10, 10))
-
-        # Show images
-        for idx in np.arange(len(labels.numpy())):
-            ax = fig.add_subplot(5, 5, idx+1, xticks=[], yticks=[])
-            npimg = unnormalize(images[idx])
-            ax.imshow(npimg, cmap='gray')
-            ax.set_title("Label={}".format(str(self.classes[labels[idx]])))
-
-        fig.tight_layout()  
-        plt.show()
-
-        if return_flag:
-            return images,labels
+   
