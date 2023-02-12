@@ -22,7 +22,14 @@ def unnormalize(tensor, mean=(0.4914, 0.4822, 0.4471), std=(0.2469, 0.2433, 0.26
     plt.imshow(np.transpose(npimg, (1, 2, 0)))
     plt.show()
 
-import torchvision
+def plot_sample_images(dataloader_obj, batch_size=5)
+# get some random training images
+dataiter = iter(dataloader_obj)
+images, labels = next(dataiter)
+# show images
+imshow(torchvision.utils.make_grid(images[0:batch_size]))
+# print labels
+print([classes[i] for i in labels[0:4]])
 
 def plot_mispredictions(model, device, test_loader, target_classes):
   '''
