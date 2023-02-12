@@ -38,7 +38,7 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 
 # Data
 def data_loader(dataaset_name = 'CIFAR10'):
-    if dataaset_name == 'CIFAR10':
+    if dataset_name == 'CIFAR10':
         print('==> Preparing data..')
         transform_train = transforms.Compose([
             transforms.RandomCrop(32, padding=4),
