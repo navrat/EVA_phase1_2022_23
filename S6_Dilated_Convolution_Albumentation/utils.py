@@ -11,6 +11,19 @@ import pandas as pd
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 
+def unnormalize(tensor, mean=(0.4914, 0.4822, 0.4471), std=(0.2469, 0.2433, 0.2615)):
+    for t, m, s in zip(tensor, mean, std):
+        t.mul_(s).add_(m)
+    return tensor
+  
+ def imshow(img):
+    img = unnormalize(img)    # unnormalize
+    npimg = img.numpy()
+    plt.imshow(np.transpose(npimg, (1, 2, 0)))
+    plt.show()
+
+import torchvision
+
 def plot_mispredictions(model, device, test_loader, target_classes):
   '''
   - provides accuracy and loss for the dataset created via test_loader
