@@ -30,7 +30,10 @@
 - The training log alongside epoch wise validation stats and the output of torchsummary can be referenced from the notebook.
 
 ### Misclassified Images
-![image](https://user-images.githubusercontent.com/31410799/218307942-c4cc4fb6-376e-4259-81e2-4ae347dd7905.png)
+![image](https://user-images.githubusercontent.com/31410799/219889733-52fa4d9f-c722-4e7b-9183-5aa1259c12af.png)
+
+![image](https://user-images.githubusercontent.com/31410799/219889877-2a96479f-8b43-47a5-872c-30f81e382314.png)
+
 
 ## GradCam of misclassifeid Images
 
