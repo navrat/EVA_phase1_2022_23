@@ -41,19 +41,8 @@
 
 - class wise performance on Test Data:
 
-  classes  accuracy
-0   plane      87.3
-1     car      96.4
-2    bird      81.7
-3     cat      91.6
-4    deer      84.8
-5     dog      95.6
-6    frog      93.3
-7   horse      91.9
-8    ship      95.3
-9   truck      94.2
-              precision    recall  f1-score   support
 
+        classes    precision  recall  f1-scoare support
         bird       0.90      0.87      0.89      1000
          car       0.95      0.96      0.96      1000
          cat       0.82      0.82      0.82      1000
