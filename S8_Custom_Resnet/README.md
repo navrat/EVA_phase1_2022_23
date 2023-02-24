@@ -41,18 +41,7 @@
 
 - class wise performance on Test Data:
 
-   classes  accuracy
- 0   plane      73.8
- 1     car      92.0
- 2    bird      68.5
- 3     cat      80.3
- 4    deer      68.7
- 5     dog      89.2
- 6    frog      84.3
- 7   horse      83.8
- 8    ship      91.7
- 9   truck      87.7
-
+ 
 - The training log alongside epoch wise validation stats and the output of torchsummary can be referenced from the notebook.
 
 ## Misclassified Images
