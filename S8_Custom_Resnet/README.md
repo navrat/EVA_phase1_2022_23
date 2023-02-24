@@ -40,20 +40,7 @@
   - Testing: Average loss: 0.2693, Accuracy: 9121/10000 (91.21%)
 
 - class wise performance on Test Data:
- class wise performance: 
-
-  classes  accuracy
-0   plane      87.3
-1     car      96.4
-2    bird      81.7
-3     cat      91.6
-4    deer      84.8
-5     dog      95.6
-6    frog      93.3
-7   horse      91.9
-8    ship      95.3
-9   truck      94.2
-
+<img width="110" alt="image" src="https://user-images.githubusercontent.com/31410799/221163741-f450efea-5ad7-4d4d-80f1-3306cdbbe308.png">
  
 - The training log alongside epoch wise validation stats and the output of torchsummary can be referenced from the notebook.
 
