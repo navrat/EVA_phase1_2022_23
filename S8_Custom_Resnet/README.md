@@ -42,7 +42,7 @@
 - class wise performance on Test Data:
 
 
-        classes    precision  recall  f1-scoare support
+        classes    precision  recall  f1-score support
         bird       0.90      0.87      0.89      1000
          car       0.95      0.96      0.96      1000
          cat       0.82      0.82      0.82      1000
@@ -72,5 +72,6 @@ weighted avg       0.91      0.91      0.91     10000
 
 
 - Layer2:
+- 
 ![image](https://user-images.githubusercontent.com/31410799/221163140-0759f9f7-9ca5-401f-90f3-d0fcaf3dacff.png)
 
