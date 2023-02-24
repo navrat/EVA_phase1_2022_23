@@ -12,7 +12,7 @@
 ### Results
 - The total number of parameters in the model were xx to achieve required accuracy. 
 - Average loss after 20 epochs: 
-  - Training: Loss = 0.71 ; Accuracy = 77.06%
+  - Training: Loss = 0.38 ; Accuracy = 85.22%
   - Testing: Loss = 0.0030, Accuracy: 8705/10000 (87.05%)
   - class wise performance on Test Data: 
 
