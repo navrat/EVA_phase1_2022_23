@@ -40,8 +40,35 @@
   - Testing: Average loss: 0.2693, Accuracy: 9121/10000 (91.21%)
 
 - class wise performance on Test Data:
-<img width="110" alt="image" src="https://user-images.githubusercontent.com/31410799/221163741-f450efea-5ad7-4d4d-80f1-3306cdbbe308.png">
- 
+
+  classes  accuracy
+0   plane      87.3
+1     car      96.4
+2    bird      81.7
+3     cat      91.6
+4    deer      84.8
+5     dog      95.6
+6    frog      93.3
+7   horse      91.9
+8    ship      95.3
+9   truck      94.2
+              precision    recall  f1-score   support
+
+        bird       0.90      0.87      0.89      1000
+         car       0.95      0.96      0.96      1000
+         cat       0.82      0.82      0.82      1000
+        deer       0.90      0.92      0.91      1000
+         dog       0.88      0.85      0.86      1000
+        frog       0.91      0.96      0.93      1000
+       horse       0.95      0.93      0.94      1000
+       plane       0.92      0.92      0.92      1000
+        ship       0.96      0.95      0.96      1000
+       truck       0.93      0.94      0.94      1000
+
+    accuracy                           0.91     10000
+   macro avg       0.91      0.91      0.91     10000
+weighted avg       0.91      0.91      0.91     10000
+
 - The training log alongside epoch wise validation stats and the output of torchsummary can be referenced from the notebook.
 
 ## Misclassified Images
