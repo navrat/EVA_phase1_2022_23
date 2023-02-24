@@ -36,16 +36,37 @@
 ## Results
 - The total number of parameters in the model were xx to achieve required accuracy.
 - Average loss after 20 epochs:
-  - Training: Loss = ?? ; Accuracy = ??
-  - Testing: Loss = ?? ; Accuracy: ??
+  - Training: Average loss: 0.1717, Accuracy: 47014/50000 (94.03%)
+  - Testing: Average loss: 0.2693, Accuracy: 9121/10000 (91.21%)
 
 - class wise performance on Test Data:
+ class wise performance: 
 
+  classes  accuracy
+0   plane      87.3
+1     car      96.4
+2    bird      81.7
+3     cat      91.6
+4    deer      84.8
+5     dog      95.6
+6    frog      93.3
+7   horse      91.9
+8    ship      95.3
+9   truck      94.2
  
 - The training log alongside epoch wise validation stats and the output of torchsummary can be referenced from the notebook.
 
 ## Misclassified Images
 
+![image](https://user-images.githubusercontent.com/31410799/221162933-7cb988fc-824f-4739-889b-dab576eba7ce.png)
 
 ## GradCam of Misclassified Images
+
+- Layer3:
+
+![image](https://user-images.githubusercontent.com/31410799/221163016-d2fbdefe-5150-48e1-8a94-b89780ef234a.png)
+
+
+- Layer2:
+![image](https://user-images.githubusercontent.com/31410799/221163140-0759f9f7-9ca5-401f-90f3-d0fcaf3dacff.png)
 
