@@ -36,8 +36,9 @@ Z*Out = 8*8x48 > 48
     out = self.fclayer(Z)
     return out
 
-class net(nn.Module):
+class Custom_Attention_Model(nn.Module):
   '''
+  Create the full model to understand self attention mechanism
   Add 3 Convolutions to arrive at AxAx48 dimensions (e.g. 32x32x3 | 3x3x3x16 >> 3x3x16x32 >> 3x3x32x48)
   Apply GAP and get 1x1x48, call this X
   Repeat the Ultimus block 4 times
