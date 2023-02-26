@@ -25,14 +25,32 @@ The total number of parameters in the model were 26,074.
 
 ## Average loss after 24 epochs:
 
-Training: Average loss: nan, Accuracy:  (10.00%)
-Testing: Average loss: nan, Accuracy:  (10.00%)
+Training: Average loss: nan, Accuracy: 1000/10000 (10.00%)
+Testing: Average loss: nan, Accuracy: 1000/10000 (10.00%)
 class wise performance on Test Data:
+              precision    recall  f1-score   support
 
-The training log alongside epoch wise validation stats and the output of torchsummary can be referenced from the notebook.
+        bird       0.00      0.00      0.00      1000
+         car       0.00      0.00      0.00      1000
+         cat       0.00      0.00      0.00      1000
+        deer       0.00      0.00      0.00      1000
+         dog       0.00      0.00      0.00      1000
+        frog       0.00      0.00      0.00      1000
+       horse       0.00      0.00      0.00      1000
+       plane       0.10      1.00      0.18      1000
+        ship       0.00      0.00      0.00      1000
+       truck       0.00      0.00      0.00      1000
+
+    accuracy                           0.10     10000
+   macro avg       0.01      0.10      0.02     10000
+weighted avg       0.01      0.10      0.02     10000
+
+
+## The training log alongside epoch wise validation stats and the output of torchsummary can be referenced from the notebook.
 
 ## Training and Validation Performance Charts
-image
+Losses are coming nan and Accuracies are coming 10% i.e. no training taking place. All labels are predicted as a single class.
+![image](https://user-images.githubusercontent.com/31410799/221429433-a430b364-cbeb-4abc-bf41-3ba5d40e9e68.png)
 
 ## Misclassified Images
-image
+![image](https://user-images.githubusercontent.com/31410799/221429461-b3665752-6681-4e57-bb86-0dc8c89a1bc3.png)
