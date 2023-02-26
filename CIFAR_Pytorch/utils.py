@@ -199,6 +199,41 @@ def plot_evolution_graph(trainObj, testObj):
     plt.tight_layout()
     plt.show()
 
+def plot_evolution_graph_onecycle_LR(history):
+
+    fig, ax = plt.subplots(2, 2, figsize=(15, 10))
+    # Loss Plot
+    trainObj_losses_array = history[1]
+    ax[0,0].plot(trainObj_losses_array, label='Loss')
+    ax[0,0].set_xlabel('# batches')
+    ax[0,0].set_ylabel('Loss')
+    ax[0,0].set_title('Loss vs. # batches')
+    ax[0,0].legend('training')
+    
+    testObj_losses_array = history[3]
+    # ax2 = ax[0].twinx()
+    ax[0,1].plot(testObj_losses_array, label='Loss')
+    ax[0,1].set_xlabel('# Epochs')
+    ax[0,1].set_ylabel('Loss')
+    ax[0,1].set_title('Loss vs. # Epochs')
+    ax[0,1].legend('test')
+
+    # Accuracy Plot
+    ax[1,0].plot(history[0], label='Accuracy')
+    ax[1,0].set_xlabel('# batches')
+    ax[1,0].set_ylabel('Accuracy')
+    ax[1,0].set_title('Accuracy vs. # batches')
+    ax[1,0].legend('training')
+
+    ax[1,1].plot(history[2], label='Accuracy')
+    ax[1,1].set_xlabel('# Epochs')
+    ax[1,1].set_ylabel('Accuracy')
+    ax[1,1].set_title('Accuracy vs. # Epochs')
+    ax[1,1].legend('test')
+
+    plt.tight_layout()
+    plt.show()
+
 
 
     
