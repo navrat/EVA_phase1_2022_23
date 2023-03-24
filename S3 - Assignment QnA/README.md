@@ -1,4 +1,4 @@
-Forward and BackPropagation Calculations at different Learning Rates for a sample input of a 3 layer neural network
+## Forward and BackPropagation Calculations at different Learning Rates for a sample input of a 3 layer neural network
 - defining inputs, weights and target values
 - feedforward calculations using sigmoid activations to get total error at each step (use of mean square error as loss)
 - using chain rule, gradient calculations through the output layer first to get gradients for w5 to w8
@@ -6,3 +6,56 @@ Forward and BackPropagation Calculations at different Learning Rates for a sampl
 - use of a learning rate to update weights based on direction of gradients to minimize loss
 - run this for multiple iterations and track weight changes and loss reduction
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/31410799/212448434-98577c20-583b-42f7-a997-77c74d21d159.png">
+
+
+## Neural Network run with <20k parameters:
+
+- Param List and architecture
+-----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 16, 28, 28]             160
+       BatchNorm2d-2           [-1, 16, 28, 28]              32
+           Dropout-3           [-1, 16, 28, 28]               0
+         MaxPool2d-4           [-1, 16, 14, 14]               0
+            Conv2d-5           [-1, 32, 12, 12]           4,640
+       BatchNorm2d-6           [-1, 32, 12, 12]              64
+           Dropout-7           [-1, 32, 12, 12]               0
+         MaxPool2d-8             [-1, 32, 6, 6]               0
+            Conv2d-9             [-1, 32, 4, 4]           9,248
+      BatchNorm2d-10             [-1, 32, 4, 4]              64
+          Dropout-11             [-1, 32, 4, 4]               0
+           Conv2d-12             [-1, 10, 2, 2]           2,890
+        AvgPool2d-13             [-1, 10, 1, 1]               0
+================================================================
+Total params: 17,098
+Trainable params: 17,098
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.44
+Params size (MB): 0.07
+Estimated Total Size (MB): 0.51
+
+
+- Training and Validation Log:
+
+  0%|          | 0/469 [00:00<?, ?it/s]<ipython-input-28-83d789f1817a>:24: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
+  return F.log_softmax(x)
+loss=0.15329350531101227 batch_id=468: 100%|██████████| 469/469 [00:18<00:00, 25.94it/s]
+Test set: Average loss: 0.0880, Accuracy: 9758/10000 (98%)
+
+loss=0.014375776052474976 batch_id=468: 100%|██████████| 469/469 [00:15<00:00, 30.87it/s]
+Test set: Average loss: 0.0723, Accuracy: 9788/10000 (98%)
+
+loss=0.07859987020492554 batch_id=468: 100%|██████████| 469/469 [00:14<00:00, 31.64it/s]
+Test set: Average loss: 0.0557, Accuracy: 9831/10000 (98%)
+
+loss=0.07332415878772736 batch_id=468: 100%|██████████| 469/469 [00:14<00:00, 31.34it/s]
+Test set: Average loss: 0.0387, Accuracy: 9890/10000 (99%)
+
+loss=0.0197222251445055 batch_id=468: 100%|██████████| 469/469 [00:14<00:00, 31.68it/s]
+Test set: Average loss: 0.0395, Accuracy: 9875/10000 (99%)
+
+loss=0.005569449160248041 batch_id=468: 100%|██████████| 469/469 [00:14<00:00, 31.96it/s]
+Test set: Average loss: 0.0337, Accuracy: 9904/10000 (99%)
