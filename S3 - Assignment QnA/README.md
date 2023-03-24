@@ -11,14 +11,19 @@
 ## Neural Network run with <20k parameters:
 
 - Param List and architecture
+
 Total params: 17,098
+
 Trainable params: 17,098
+
 Non-trainable params: 0
+
 
 - Training and Validation Log:
 
   0%|          | 0/469 [00:00<?, ?it/s]<ipython-input-28-83d789f1817a>:24: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
   return F.log_softmax(x)
+
 loss=0.15329350531101227 batch_id=468: 100%|██████████| 469/469 [00:18<00:00, 25.94it/s]
 Test set: Average loss: 0.0880, Accuracy: 9758/10000 (98%)
 
