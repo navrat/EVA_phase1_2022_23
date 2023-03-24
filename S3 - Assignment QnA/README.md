@@ -11,32 +11,9 @@
 ## Neural Network run with <20k parameters:
 
 - Param List and architecture
------------------------------------------------------------------
-        Layer (type)               Output Shape         Param #
-================================================================
-            Conv2d-1           [-1, 16, 28, 28]             160
-       BatchNorm2d-2           [-1, 16, 28, 28]              32
-           Dropout-3           [-1, 16, 28, 28]               0
-         MaxPool2d-4           [-1, 16, 14, 14]               0
-            Conv2d-5           [-1, 32, 12, 12]           4,640
-       BatchNorm2d-6           [-1, 32, 12, 12]              64
-           Dropout-7           [-1, 32, 12, 12]               0
-         MaxPool2d-8             [-1, 32, 6, 6]               0
-            Conv2d-9             [-1, 32, 4, 4]           9,248
-      BatchNorm2d-10             [-1, 32, 4, 4]              64
-          Dropout-11             [-1, 32, 4, 4]               0
-           Conv2d-12             [-1, 10, 2, 2]           2,890
-        AvgPool2d-13             [-1, 10, 1, 1]               0
-================================================================
 Total params: 17,098
 Trainable params: 17,098
 Non-trainable params: 0
-----------------------------------------------------------------
-Input size (MB): 0.00
-Forward/backward pass size (MB): 0.44
-Params size (MB): 0.07
-Estimated Total Size (MB): 0.51
-
 
 - Training and Validation Log:
 
