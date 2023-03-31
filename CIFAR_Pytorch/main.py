@@ -268,7 +268,96 @@ def model_training_setup(net, lr = 0.1, criterion="nll_loss", optimizer="sgd", s
                         momentum=0.9, weight_decay=5e-4)
   scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
   return criterion, optimizer, scheduler, n_epochs
-  
+
+# Assignment 10 - Train a Transformer
+def trainTransformer(model: nn.Module, trainloader: DataLoader,
+                    testloader: DataLoader, epochs: int = 25, lr_max: float = 0.01,
+                    clip_norm: bool = True, scheduler_flag: bool = False) -> Tuple[nn.Module, Tuple[List[float], List[float], List[float], List[float], List[float]]]:
+
+    """Train a neural network
+    Args:
+        model (nn.Module): neural network to train
+        trainloader (DataLoader): trainloader with train dataset
+        testloader (DataLoader): testloader with test dataset
+        epochs (int, optional): number of epoachs to train for. Defaults is 25.
+        lr_max (float, optional): float  specifying the maximum learning rate. Defaults 0.01.
+        clip_norm (bool, optional): whether to clip gradients by norm of 1. Default is True.
+        scheduler (bool, optional): whether to use learning rate scheduler. Defaults to False.
+    Returns:
+        Tuple[nn.Module, Tuple[List[float], List[float], List[float], List[float]]]
+    """
+    training_acc, training_loss, testing_acc, testing_loss = list(), list(), list(), list()
+    lr_hist = []
+
+    # Define learning rate scheduler
+    if scheduler_flag:
+        lr_schedule = lambda t: np.interp([t], [0, epochs*2//5, epochs*4//5,epochs],
+                                         [0, lr_max, lr_max/20.0, 0])[0]
+
+    # Define optimizer and criterion 
+    model = nn.DataParallel(model, device_ids=[0]).cuda()
+    opt = optim.AdamW(model.parameters(), lr=lr_max, weight_decay=0.01)
+    criterion = nn.CrossEntropyLoss()
+    scaler = torch.cuda.amp.GradScaler()
+
+    for epoch in range(epochs):
+        start = time.time()
+        train_loss, train_acc, n = 0, 0, 0
+
+        for i, (X,y) in enumerate(trainloader):
+            model.train()
+            X, y = X.cuda(), y.cuda()
+
+            # Update learning rate
+            if scheduler_flag:
+                lr = lr_schedule(epoch + (i + 1)/len(trainloader))
+                opt.param_groups[0].update(lr=lr)
+                lr_hist.append(lr)
+
+            opt.zero_grad()
+            with torch.cuda.amp.autocast():
+                output = model(X)
+                loss = criterion(output, y)
+
+            scaler.scale(loss).backward()
+
+            if clip_norm:
+                scaler.unscale_(opt)
+                nn.utils.clip_grad_norm_(model.parameters(),1.0)
+            
+            scaler.step(opt)
+            scaler.update()
+
+            train_loss += loss.item() * y.size(0)
+            train_acc += (output.max(1)[1] == y).sum().item()
+            n += y.size(0)
+        
+        # Calculate testing accuracy and loss
+        model.eval()
+        test_loss, test_acc, m = 0, 0, 0
+
+        with torch.no_grad():
+            for X, y in testloader:
+                X, y = X.cuda(), y.cuda()
+                with torch.cuda.amp.autocast():
+                    output = model(X)
+                    test_loss += criterion(output, y).item() * y.size(0)
+                    test_acc += (output.max(1)[1] == y).sum().item()
+
+                    m += y.size(0)
+
+        train_loss /= n
+        train_acc /= n
+        test_loss /= m
+        test_acc /= m
+
+        print(f'VIT: Epoch: {epoch} | ',
+              f'Train Acc: {train_acc:.4f}, ',
+              f'Test Acc: {test_acc:.4f}, ',
+              f'Time: {time.time() - start:.1f}, ',
+              f'lr: {lr:.6f}')
+    return model, training_acc, training_loss, testing_acc, testing_loss
+
 # Assignment 8 - One cycle learning rate
 def train_onecycle_LR(model, device, train_loader, criterion, scheduler, optimizer, use_l1=False, lambda_l1=0.01):
     """Function to train the model
